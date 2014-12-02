@@ -1,0 +1,24 @@
+buildscript {
+    repositories{
+        mavenCentral()
+        maven{ url = 'https://repo.eclipse.org/content/repositories/egit-releases/' }
+        maven{ url = 'https://raw.github.com/garc33/m2p2-repository/mvn-repo/maven/releases/' }
+    }
+    dependencies { classpath "fr.herman.gradle.plugins:gradle-github-plugin:1.0" }
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'github'
+
+version = '1.0-SNAPSHOT'
+sourceCompatibility = 1.7
+group 'fr.herman.lang'
+
+github {
+    username = 'garc33'
+    repo = 'm2p2-repository'
+    branch = 'mvn-repo'
+}
+
+dependencies { testCompile 'junit:junit:4.11' }
